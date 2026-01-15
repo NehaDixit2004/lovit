@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker rm -f  neha'
-                    sh 'docker run -d --name neha -p 3008:80 nehadixitji009/neha'
+                    sh 'docker run -d --name neha -p 3008:80 nehadixitji009/dixit'
                 }
             }
         }
