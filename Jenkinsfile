@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', poll: false, url: 'https://github.com/ayushmansingh2711/AI-chat-bot-docker-jenkins1'
+                git branch: 'main', poll: false, url: 'https://github.com/NehaDixit2004/lovit.git'
             }
         }
 
         stage('Build and Push Images') {
             steps {
                 script {
-                    sh 'docker build -t ayushman2711/react-app1 .'
+                    sh 'docker build -t nehadixitji009/react-app1 .'
                     withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'ay_pass', usernameVariable: 'ay_user')]) {
                         sh 'docker login -u $ay_user -p $ay_pass'
-                        sh 'docker push ayushman2711/react-app1 '
+                        sh 'docker push nehadixitji009/react-app1 '
                     }
                 }
             }
@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker rm -f  react-app1'
-                    sh 'docker run -d --name my-react-app2 -p 1155:80 ayushman2711/react-app1'
+                    sh 'docker run -d --name my-react-app2 -p 1155:80 nehadixitji009/react-app1'
                 }
             }
         }
