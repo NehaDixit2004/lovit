@@ -10,10 +10,10 @@ pipeline {
         stage('Build and Push Images') {
             steps {
                 script {
-                    sh 'docker build -t nehadixitji009/neha .'
+                    sh 'docker build -t nehadixitji009/dixit .'
                     withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'ay_pass', usernameVariable: 'ay_user')]) {
                         sh 'docker login -u $ay_user -p $ay_pass'
-                        sh 'docker push nehadixitji009/neha '
+                        sh 'docker push nehadixitji009/dixit'
                     }
                 }
             }
