@@ -10,10 +10,10 @@ pipeline {
         stage('Build and Push Images') {
             steps {
                 script {
-                    sh 'docker build -t nehadixitji009/react-app1 .'
+                    sh 'docker build -t nehadixitji009/neha .'
                     withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'ay_pass', usernameVariable: 'ay_user')]) {
                         sh 'docker login -u $ay_user -p $ay_pass'
-                        sh 'docker push nehadixitji009/react-app1 '
+                        sh 'docker push nehadixitji009/neha '
                     }
                 }
             }
@@ -22,8 +22,8 @@ pipeline {
         stage('Deploy Services') {
             steps {
                 script {
-                    sh 'docker rm -f  react-app1'
-                    sh 'docker run -d --name my-react-app2 -p 3008:80 nehadixitji009/react-app1'
+                    sh 'docker rm -f  neha'
+                    sh 'docker run -d --name my-react-app2 -p 3008:80 nehadixitji009/neha'
                 }
             }
         }
